@@ -1,0 +1,41 @@
+name: Problem with a listing
+description: A wrong hash, a dead URL, a licence that does not match, or anything else wrong with an entry.
+title: 'Listing: <vendor>.<name>'
+labels: [listing]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Bugs in a module go to **that module's own repository**. Use this only when the problem is
+        with the entry in `index.json`.
+
+        For a security concern about a module that is already listed, mail the address in
+        [Tetravox's SECURITY.md](https://github.com/idossha/tetravox/blob/main/SECURITY.md) instead
+        of opening a public issue.
+  - type: input
+    id: id
+    attributes:
+      label: Module id and version
+      placeholder: tetravox.seeg 1.0.0
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What is wrong
+      options:
+        - The sha256 or bytes do not match the asset
+        - A URL is dead or the release is gone
+        - The licence in the entry does not match the repository
+        - The permissions listed do not match what the module asks for
+        - The repository has disappeared or been renamed
+        - Something else
+    validations:
+      required: true
+  - type: textarea
+    id: detail
+    attributes:
+      label: What you saw
+      description: Commands and output where you have them, e.g. `curl -fsSL <url> | shasum -a 256`.
+    validations:
+      required: true

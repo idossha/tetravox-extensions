@@ -1,0 +1,6 @@
+{
+  "$comment": "The curated Tetravox extensions index. `packages/app/src/main/module-store.ts` in idossha/tetravox reads this shape; a release refreshes the copy the app ships as `packages/app/src/shared/extensions-index.json`, so File > Extensions is correct offline. Files are content-addressed: `url` is the file's own sha256 on the module repository's release, and the app refuses a mismatch. Run `node scripts/validate-index.mjs` before opening a pull request.",
+  "schema": 1,
+  "generated": "2026-08-31T00:00:00Z",
+  "modules": []
+}

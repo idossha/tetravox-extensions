@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: A bug in a listed module
+    url: https://github.com/idossha/tetravox-extensions/blob/main/README.md
+    about: Modules are maintained in their own repositories — open the issue there, not here.
+  - name: A bug in Tetravox itself
+    url: https://github.com/idossha/tetravox/issues
+    about: The app, the Extensions dialog, installing and enabling.

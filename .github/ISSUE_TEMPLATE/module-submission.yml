@@ -1,0 +1,114 @@
+name: Module submission
+description: Propose a module for the Tetravox extensions index, before opening a pull request.
+title: 'Submit: <vendor>.<name>'
+labels: [submission]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this to propose a module and get the review started. The listing itself is a **pull
+        request** that adds one entry to `index.json` — this issue is where the questions get
+        answered first, so that pull request is a one-object diff.
+
+        Everything below maps onto the checklist in
+        [CONTRIBUTING.md](https://github.com/idossha/tetravox-extensions/blob/main/CONTRIBUTING.md).
+
+  - type: input
+    id: id
+    attributes:
+      label: Module id
+      description: '`<vendor>.<name>`, lower case, the same id as the module''s manifest.json.'
+      placeholder: tetravox.seeg
+    validations:
+      required: true
+
+  - type: input
+    id: repo
+    attributes:
+      label: Repository
+      placeholder: https://github.com/owner/name
+    validations:
+      required: true
+
+  - type: input
+    id: summary
+    attributes:
+      label: Summary
+      description: One line, at most 200 characters — the sentence under the title on the card.
+    validations:
+      required: true
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What it does
+      description: A paragraph. What a user gets, and on what kind of data.
+    validations:
+      required: true
+
+  - type: input
+    id: licence
+    attributes:
+      label: Licence (SPDX identifier)
+      description: The licence in the repository's LICENSE file. An unlicensed module cannot be listed.
+      placeholder: MIT
+    validations:
+      required: true
+
+  - type: input
+    id: hostapi
+    attributes:
+      label: hostApi and the Tetravox release you tested against
+      description: The MODULE_HOST_VERSION the module targets, and the release you ran it in.
+      placeholder: hostApi 1, tested on Tetravox v0.4.0
+    validations:
+      required: true
+
+  - type: input
+    id: release
+    attributes:
+      label: Tagged release whose assets the entry will name
+      description: >-
+        Its `index.js` and `manifest.json` must be uploaded under their own sha256 as the asset name.
+      placeholder: https://github.com/owner/name/releases/tag/v1.0.0
+    validations:
+      required: true
+
+  - type: textarea
+    id: permissions
+    attributes:
+      label: Permissions, and why
+      description: >-
+        One line per thing the manifest asks for — file types read, files written beside the one the
+        user names, keys bound, job operations exposed, whether it stores a block in saved scenes —
+        with one sentence each on why the module needs it.
+      placeholder: |
+        Read .tsv, .csv files you choose — imports contact tables exported by the surgical planner.
+        Write {name}.{stamp}.bak beside the file you save — keeps the previous table when overwriting.
+        Bind the keys a, s, f while it is active — place, snap and fit the selected contact.
+    validations:
+      required: true
+
+  - type: input
+    id: ci
+    attributes:
+      label: Link to the module repository's green CI run on the tagged commit
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: understood
+    attributes:
+      label: Understood
+      options:
+        - label: >-
+            An enabled module is trusted renderer code: it runs in the Tetravox window with the same
+            access as first-party code, and nothing here sandboxes it.
+          required: true
+        - label: >-
+            Listing is curation by human review, not an audit, and the entry can be removed if the
+            module's licence, repository or behaviour changes.
+          required: true
+        - label: >-
+            I have read CONTRIBUTING.md and will open the pull request with the checklist filled in.
+          required: true

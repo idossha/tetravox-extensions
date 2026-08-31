@@ -1,0 +1,43 @@
+# `index.json` is the only thing this repository ships, and the app verifies every download against
+# it — so a mistyped hash here is a card nobody can install. This job is what says the file is
+# legible, and it is deliberately cheap: no install, no toolchain, no cache. Node and three commands.
+name: validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  index:
+    name: index.json is valid
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      # The guard's own fixtures first: a rule nobody has watched fail is a rule nobody can trust.
+      - name: Self-test the index validator
+        run: node --test scripts/validate-index.test.mjs
+
+      # The shape rules — offline, so a fork's CI is not a flaky download.
+      - name: index.json is valid
+        run: node scripts/validate-index.mjs
+
+      # …and then the network half: every listed asset must actually be there, under its own hash.
+      # A release that is still a draft, or an asset uploaded under its file name instead of its
+      # sha256, fails here rather than in a user's Extensions dialog.
+      - name: Every release asset is reachable
+        run: node scripts/validate-index.mjs --check-urls
