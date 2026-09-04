@@ -1,13 +1,13 @@
 {
   "$comment": "The curated Tetravox extensions index. `packages/app/src/main/module-store.ts` in idossha/tetravox reads this shape; a release refreshes the copy the app ships as `packages/app/src/shared/extensions-index.json`, so File > Extensions is correct offline. Files are content-addressed: `url` is the file's own sha256 on the module repository's release, and the app refuses a mismatch. Run `node scripts/validate-index.mjs` before opening a pull request.",
   "schema": 1,
-  "generated": "2026-08-31T23:59:00Z",
+  "generated": "2026-09-04T05:09:23Z",
   "modules": [
     {
       "id": "tetravox.seeg",
       "title": "sEEG contacts",
-      "summary": "Localise and edit stereo-EEG contacts on a registered CT, and write the BIDS electrodes table back.",
-      "description": "A contact editor for stereo-EEG depth electrodes. Open a registered CT and the BIDS electrodes.tsv localised on it, snap contacts onto the metal, re-fit and renumber shafts, and save the table back with a timestamped backup and a seegprep-compatible editlog. Reproduces the 3D Slicer SEEG Contact Editor workflow in Tetravox's own panes, and every panel action is also a job-file operation.",
+      "summary": "Localise and edit stereo-EEG contacts on a registered CT, snap them onto shaft axes with electrode-model awareness, and write the BIDS electrodes table back.",
+      "description": "A contact editor for stereo-EEG depth electrodes. Open a registered CT and the BIDS electrodes.tsv localised on it, snap contacts onto the shaft axis (electrode-model aware), re-fit and renumber shafts, extend to a model's full contact count, and save the table back with a timestamped backup and a seegprep-compatible editlog. Exports spacing and reslice/implant QC figures (SVG/PNG, and PDF from 0.2.1) alongside the BIDS derivatives tree. Reproduces the 3D Slicer SEEG Contact Editor workflow in Tetravox's own panes, and every panel action is also a job-file operation. Versions 0.2.0+ need Tetravox 0.3.5+.",
       "repo": "https://github.com/idossha/tetravox-seeg",
       "author": "idossha",
       "licence": "MIT",
@@ -157,6 +157,131 @@
             "Write {stem}_editlog.json beside the file you save",
             "Bind the keys Delete, Shift+s, Shift+z, a, d, f, g, n, p, s, t, z while it is active",
             "Run from a job file: delete, flip-tip, ghost, load, refit, renumber, revert, save, size, snap, stats, wire",
+            "Store its own data inside a saved scene"
+          ]
+        },
+        {
+          "version": "0.1.5",
+          "tag": "v0.1.5",
+          "hostApi": 1,
+          "published": "2026-09-02",
+          "files": [
+            {
+              "name": "index.js",
+              "bytes": 124947,
+              "sha256": "6d5b673d4baa460f2a6e8fc3a44ce4872e8fd564a85f91f6652d732ace6eca0c",
+              "url": "https://github.com/idossha/tetravox-seeg/releases/download/v0.1.5/6d5b673d4baa460f2a6e8fc3a44ce4872e8fd564a85f91f6652d732ace6eca0c"
+            },
+            {
+              "name": "manifest.json",
+              "bytes": 4388,
+              "sha256": "1a37015beedc26d432643d680240afac1cecfd12c10c11398676664215f1c2e5",
+              "url": "https://github.com/idossha/tetravox-seeg/releases/download/v0.1.5/1a37015beedc26d432643d680240afac1cecfd12c10c11398676664215f1c2e5"
+            }
+          ],
+          "permissions": [
+            "Read .csv, .fcsv, .tsv files you choose",
+            "Discover and read files named near a file you open",
+            "Write .tsv files you name in a Save sheet",
+            "Write {name}.{stamp}.bak beside the file you save",
+            "Write {stem}_editlog.json beside the file you save",
+            "Bind the keys Delete, Shift+s, Shift+z, a, d, f, g, n, p, s, t, z while it is active",
+            "Run from a job file: delete, flip-tip, ghost, load, refit, renumber, revert, save, size, snap, stats, wire",
+            "Store its own data inside a saved scene"
+          ]
+        },
+        {
+          "version": "0.1.6",
+          "tag": "v0.1.6",
+          "hostApi": 1,
+          "published": "2026-09-03",
+          "files": [
+            {
+              "name": "index.js",
+              "bytes": 127964,
+              "sha256": "74dfd7735ecf9ac254bae02be89a824e530bdb1b56aa6d8db7b805e70402874c",
+              "url": "https://github.com/idossha/tetravox-seeg/releases/download/v0.1.6/74dfd7735ecf9ac254bae02be89a824e530bdb1b56aa6d8db7b805e70402874c"
+            },
+            {
+              "name": "manifest.json",
+              "bytes": 4388,
+              "sha256": "af078e39f5f3bf82d02aa57b28a9794601889bd49ab359e409e95b377e243819",
+              "url": "https://github.com/idossha/tetravox-seeg/releases/download/v0.1.6/af078e39f5f3bf82d02aa57b28a9794601889bd49ab359e409e95b377e243819"
+            }
+          ],
+          "permissions": [
+            "Read .csv, .fcsv, .tsv files you choose",
+            "Discover and read files named near a file you open",
+            "Write .tsv files you name in a Save sheet",
+            "Write {name}.{stamp}.bak beside the file you save",
+            "Write {stem}_editlog.json beside the file you save",
+            "Bind the keys Delete, Shift+s, Shift+z, a, d, f, g, n, p, s, t, z while it is active",
+            "Run from a job file: delete, flip-tip, ghost, load, refit, renumber, revert, save, size, snap, stats, wire",
+            "Store its own data inside a saved scene"
+          ]
+        },
+        {
+          "version": "0.2.0",
+          "tag": "v0.2.0",
+          "hostApi": 1,
+          "published": "2026-09-03",
+          "files": [
+            {
+              "name": "index.js",
+              "bytes": 252103,
+              "sha256": "c6c2d18d8dc03d62873d87127a54457af591dfe047e1bce853359c2c56c2fc64",
+              "url": "https://github.com/idossha/tetravox-seeg/releases/download/v0.2.0/c6c2d18d8dc03d62873d87127a54457af591dfe047e1bce853359c2c56c2fc64"
+            },
+            {
+              "name": "manifest.json",
+              "bytes": 6900,
+              "sha256": "662cb72f608b3b0539b8d72cdbab04a3e9331dfa8b6dc7b97963a8b02b8025ff",
+              "url": "https://github.com/idossha/tetravox-seeg/releases/download/v0.2.0/662cb72f608b3b0539b8d72cdbab04a3e9331dfa8b6dc7b97963a8b02b8025ff"
+            }
+          ],
+          "permissions": [
+            "Read .csv, .fcsv, .tsv files you choose",
+            "Discover and read files named near a file you open",
+            "Write .png, .svg, .tsv files you name in a Save sheet",
+            "Write {derivatives}/tetravox/dataset_description.json beside the file you save",
+            "Write {derivatives}/tetravox/sub-{id}/ieeg/figures/sub-{id}_desc-spacing_qc.tsv beside the file you save",
+            "Write {name}.{stamp}.bak beside the file you save",
+            "Write {stem}_editlog.json beside the file you save",
+            "Bind the keys Delete, Shift+s, Shift+z, a, d, f, g, n, p, s, t, z while it is active",
+            "Run from a job file: delete, extend, flip-tip, ghost, load, refit, renumber, revert, save, size, snap, stats, wire",
+            "Store its own data inside a saved scene"
+          ]
+        },
+        {
+          "version": "0.2.1",
+          "tag": "v0.2.1",
+          "hostApi": 1,
+          "published": "2026-09-04",
+          "files": [
+            {
+              "name": "index.js",
+              "bytes": 260156,
+              "sha256": "c1f6c6fb2e3538a6834e2b4868a13e07469e74d7dfbb760a14a010a8fc222bb0",
+              "url": "https://github.com/idossha/tetravox-seeg/releases/download/v0.2.1/c1f6c6fb2e3538a6834e2b4868a13e07469e74d7dfbb760a14a010a8fc222bb0"
+            },
+            {
+              "name": "manifest.json",
+              "bytes": 5937,
+              "sha256": "1290dc538ab20c7f4ca540e99a23723086391e460c32173839e13ecaf4d73abc",
+              "url": "https://github.com/idossha/tetravox-seeg/releases/download/v0.2.1/1290dc538ab20c7f4ca540e99a23723086391e460c32173839e13ecaf4d73abc"
+            }
+          ],
+          "permissions": [
+            "Read .csv, .fcsv, .tsv files you choose",
+            "Discover and read files named near a file you open",
+            "Write .pdf, .tsv files you name in a Save sheet",
+            "Write sub-{id}_desc-implant3d_qc.pdf beside the file you save",
+            "Write {derivatives}/tetravox/dataset_description.json beside the file you save",
+            "Write {name}.{stamp}.bak beside the file you save",
+            "Write {stem}-implant3d.pdf beside the file you save",
+            "Write {stem}_editlog.json beside the file you save",
+            "Bind the keys Delete, Shift+s, Shift+z, a, d, g, n, p, s, t, z while it is active",
+            "Run from a job file: delete, export-qc, extend, flip-tip, ghost, load, renumber, revert, save, size, snap, stats, wire",
             "Store its own data inside a saved scene"
           ]
         }
